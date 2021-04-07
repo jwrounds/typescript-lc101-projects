@@ -5,8 +5,8 @@ import { Payload } from './Payload';
 export class Rocket {
   name: string;
   totalCapacityKg: number;
-  cargoItems: Cargo[];
-  astronauts: Astronaut[];
+  cargoItems: Cargo[] = [];
+  astronauts: Astronaut[] = [];
 
   constructor(name: string, totalCapacityKg: number) {
     this.name = name;
@@ -15,7 +15,9 @@ export class Rocket {
 
   sumMass( items: Payload[] ): number {
     let sum: number = 0;
-    items.forEach(item => sum += item.massKg);
+    for (let i: number = 0; i < items.length; i++) {
+      sum += items[i].massKg;
+    }
     return sum;
   }
 
